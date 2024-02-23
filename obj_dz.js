@@ -44,7 +44,7 @@ let createArr = (arr) => {
 // Получите из этого массива объект, где name == "Bob" и сохраните это в какой-либо переменной.
 // Удалите из массива объектов, задание 3, объект с name == "Anna".
 
-let user = [{
+let user1 = [{
             name: "John",
             age: 30
         },
@@ -71,7 +71,7 @@ let pomogite = (arr) => {
     return obj1;
 }
 
-// console.log(pomogite(user));
+// console.log(pomogite(user1));
 
 
 // Задача 4
@@ -80,20 +80,21 @@ let pomogite = (arr) => {
 // удалить первую функцию
 
 let objj = {
-            name: 'Ivan',
-            surname: 'Almaz',
+    name: 'Ivan',
+    surname: 'Almaz',
 
-            showFullName() {
-                console.log(this.name, this.surname);
-            },
+    showFullName() {
+        console.log(this.name, this.surname);
+    },
 
-            showmyName() {
-                console.log("My name", this.name, this.surname);
-            }
-        }     
+    showmyName() {
+        console.log("My name", this.name, this.surname);
+    }
+}     
 
 delete objj.showFullName;
 // console.log(objj);
+
 
 //Задача 5
 //Создать функцию, входными параметрами которой будут 2 числа. 
@@ -101,18 +102,84 @@ delete objj.showFullName;
 // sum() (суммировать) возвращает сумму сохранённых значений.
 // mul() (умножить) перемножает сохранённые значения и возвращает результат.
 
-let calculate = (num1, num2) => {
+let calculate = (num1, num2, op) => {
+
     let calculator = {
-        number1: num1,
-        number2: num2,
+        num1,
+        num2,
 
         sum() {
-            return this.number1 + this.number2;
+            return this.num1 + this.num2;
         },
 
         mul() {
-            return this.number1 + this.number2;
+            return this.num1 * this.num2;
         }
     }
-    return calculator;
+
+    return calculator[op]();
 }
+
+// console.log(calculate(2, 4, 'mul'));
+
+
+//Задание 6
+// У нас есть объект, в котором хранятся зарплаты нашей команды. 
+// Напишите код для суммирования всех зарплат и сохраните результат в переменной sum. Должно получиться 390.
+
+let salaries = {
+    John: 100,
+    Ann: 160,
+    Pete: 130
+}    
+
+let sumSalary = (obj) => {
+    let sum = 0;
+    for (key in obj) {
+        sum += obj[key];
+    }
+    return sum;
+}
+
+// console.log(sumSalary(salaries))
+
+
+//Задание 7
+// У нас есть следующий объект.
+// Проверьте программно, что этот объект не пустой и что в нем есть ключ age.
+
+let user = {
+    name: "John",
+    age: 30
+};
+
+let check = (obj) => {
+    console.log(Object.keys(obj).length ? 'Объект не пустой' : 'Объект пустой');
+    console.log(obj.age ? 'В объекте есть ключ age' : 'В объекте нет ключа age');
+}
+
+// check(user)
+
+
+//Задание 9
+// Создайте функцию multiplyNumeric(obj), которая умножает все числовые свойства объекта obj на 2.
+// Обратите внимание, что multiplyNumeric не нужно ничего возвращать. Следует напрямую изменять объект.
+
+let menu = {
+  width: 200,
+  height: 300,
+  title: "My menu",
+};
+
+let multiplyNumeric = (obj) => {
+
+    for (key in obj) {
+        if (typeof(obj[key]) === 'number') {
+            obj[key] *= 2;
+        }
+    }
+    
+}
+
+multiplyNumeric(menu);
+console.log(menu)
