@@ -1,0 +1,66 @@
+body, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+.task {
+    padding: 30px;
+    border-bottom: 1px solid;
+}
+
+.task-header {
+    margin-bottom: 15px;
+}
+
+.task-text {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    background-color: rgb(93, 90, 251);
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    size: 100%;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: rgb(47, 43, 253);
+    transition: 0.2s;
+}
+
+.btn:active {
+    padding: 10px;
+    background-color: rgb(221, 221, 221);
+    color: black;
+}
+
+.inp {
+    padding: 12px;
+    width: 50%;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.inp:focus {
+    border: none;
+}
+
+.change-inp {
+    margin-bottom: 5px;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(93, 90, 251);
+    margin-bottom: 20px;
+}
+
+.red-square {
+    background-color: rgb(252, 49, 49);
+}
