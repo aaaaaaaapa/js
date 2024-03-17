@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <!-- <div class="task">
+    <div class="task">
         <h2 class="task-header">1 задание</h2>
         <p class="task-text">Вывести кнопку с текстом &quot;Привет&quot;, при нажатии на неё выводим alert c
             текстом &quot;Привет Мир!&quot;</p>
@@ -51,7 +51,7 @@
         <input type="text" class="inp" id="dis-inp" placeholder="Разблокировано">
         <button type="button" class="btn" id="dis-btn">Заблокировать</button>
         <button type="button" class="btn" id="unlock-btn">Разблокировать</button>
-    </div> -->
+    </div> 
 
     <div class="task">
         <h2 class="task-header">6 задание</h2>
@@ -74,13 +74,73 @@
         <p class="task-text">Вывести 4 красных квадрата, при клике на любой, он становиться
             зеленым, при этом если есть уже зеленый квадрат, то он становиться
             обратно красным и так можно кликать на любой квадрат, он становиться
-            зеленым, а старый зеленый квадрат обратно крассным и тд. (Сделать
-            задачу так, чтобы можно было добавить ещё хоть 100 квадратов при этом
-            скрипт не надо менять).</p>
-        <div class="red-square square" id=""></div>
-        <div class="red-square square"></div>
-        <div class="red-square square"></div>
-        <div class="red-square square"></div>
+            зеленым, а старый зеленый квадрат обратно красным и тд.</p>
+
+        <div class="squares">
+            <div class="red-square square"></div>
+            <div class="red-square square"></div>
+            <div class="red-square square"></div>
+            <div class="red-square square"></div>
+        </div>
+
+    </div>
+
+    <div class="task">
+        <h2 class="task-header">9 задание</h2>
+        <p class="task-text">Реализовать калькулятор. Выводим 10 кнопок цифр от 0 до 10. Кнопки:
+            умножить, поделить, сложить, вычесть, вычислить. При нажатии на
+            кнопки в любом порядке выводиться в отдельном блоке строка (5-
+            4+3*2...) и при нажатии на кнопку посчитать, заменяем в блоке данную
+            строку на результат её вычисления, при этом можно потом дальше
+            вычислять с уже этим вычислением.</p>
+
+        <div class="calculator">
+
+            <div class="result">
+                <span class="res-hist"></span>
+                <span class="res-text">0</span>
+            </div>
+
+            <div class="buttons">
+
+                <div class="button-row">
+                    <button class="calc-btn oper">CE</button>
+                    <button class="calc-btn oper">C</button>
+                    <button class="calc-btn oper">←</button>
+                    <button class="calc-btn oper">÷</button>
+                </div>
+
+                <div class="button-row">
+                    <button class="calc-btn">7</button>
+                    <button class="calc-btn">8</button>
+                    <button class="calc-btn">9</button>
+                    <button class="calc-btn oper">×</button>
+                </div>
+                
+                <div class="button-row">
+                    <button class="calc-btn">4</button>
+                    <button class="calc-btn">5</button>
+                    <button class="calc-btn">6</button>
+                    <button class="calc-btn oper">-</button>
+                </div>
+                
+                <div class="button-row">
+                    <button class="calc-btn">3</button>
+                    <button class="calc-btn">2</button>
+                    <button class="calc-btn">1</button>
+                    <button class="calc-btn oper">+</button>
+                </div>
+                
+                <div class="button-row">
+                    <button class="calc-btn oper">±</button>
+                    <button class="calc-btn">0</button>
+                    <button class="calc-btn oper">.</button>
+                    <button class="calc-btn oper">=</button>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 
 </body>

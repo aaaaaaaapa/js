@@ -1,6 +1,7 @@
 body, h2, p {
     margin: 0;
     padding: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .task {
@@ -14,6 +15,7 @@ body, h2, p {
 
 .task-text {
     font-size: 16px;
+    margin-top: 20px;
     margin-bottom: 30px;
 }
 
@@ -58,9 +60,77 @@ body, h2, p {
     width: 100px;
     height: 100px;
     background-color: rgb(93, 90, 251);
+    margin-right: 20px;
     margin-bottom: 20px;
 }
 
+.squares {
+    display: flex;
+}
+
 .red-square {
-    background-color: rgb(252, 49, 49);
+    background-color: rgb(255, 75, 75);
+}
+
+.green-square {
+    background-color: rgb(27, 221, 76);
+}
+
+
+
+
+.calculator {
+    display: block;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 20px;
+    width: 200px;
+    font-family: 'Calibri';
+}
+
+.result {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 10px;
+    overflow: auto;
+}
+
+.res-hist {
+    font-size: 14px;
+    color: rgb(98, 98, 98);
+}
+
+.res-text {
+    font-size: 24px;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.calc-btn {
+    background-color: white;
+    border: 1px solid;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px;
+    width: 41px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.oper {
+    background-color: rgb(235, 235, 235);
+}
+
+.calc-btn:hover {
+    background-color: rgb(199, 199, 199);
+}
+
+.calc-btn:active {
+    background-color: rgb(177, 177, 177);
 }
