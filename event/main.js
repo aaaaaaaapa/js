@@ -96,13 +96,14 @@ redSq.onmouseout = () => {
 
 const squares = document.querySelector('.squares');
 const squareList = squares.querySelectorAll('.red-square');
+let greenSq;
 
 let changeColor = (elem) => {
-    if (squares.querySelector('.green-square')) {
-        let greenSq = squares.querySelector('.green-square');
-        greenSq.classList.toggle('green-square');
+    greenSq = squares.querySelector('.green-square');
+    if (greenSq) {
+        greenSq.classList.remove('green-square');
     }
-    elem.classList.toggle('green-square');
+    elem.classList.add('green-square');
 };
 
 squareList.forEach((element) => {
@@ -112,90 +113,96 @@ squareList.forEach((element) => {
 
 //9
 
-const resultText = document.querySelector('.res-text');
+const displayText = document.querySelector('.res-text');
 const historyText = document.querySelector('.res-hist');
 const buttons = document.querySelectorAll('.calc-btn');
 
 let corrResult;
 let corrOper = '';
 
-let selectOper = (oper) => {
+let cleanDisplay = (oper) => {
+
     switch (oper) {
-        case 'CE':
-            resultText.textContent = '0';
-            break;
         case 'C':
-            resultText.textContent = '0';
+            displayText.textContent = '0';
             historyText.textContent = '';
             corrResult = 0;
             corrOper = '';
+        case 'CE':
+            displayText.textContent = '0';
             break;
         case '←':
-            if (resultText.textContent.length > 1) {
-                resultText.textContent = resultText.textContent.slice(0, -1);
-            }
-            else {
-                resultText.textContent = '0';
-            }
+            displayText.textContent = displayText.textContent.length > 1 ? 
+            displayText.textContent.slice(0, -1) : '0';
+            break;
+    }
+
+}
+
+let calculateResult = (oper) => {
+
+    switch (oper) {
+        case '+':
+            return corrResult + Number(displayText.textContent);
+        case '-':
+            console.log(corrResult - Number(displayText.textContent))
+            return corrResult - Number(displayText.textContent);
+        case '÷':
+            return displayText.textContent === '0' ? 'Ошибка' : corrResult / Number(displayText.textContent);
+        case '×':
+            return corrResult * Number(displayText.textContent);
+        case '':
+            return Number(displayText.textContent);
+    }
+
+}
+
+let selectOper = (oper) => {
+    switch (oper) {
+        case 'CE':
+        case 'C':
+        case '←':
+            cleanDisplay(oper);
             break;
         case '+':
         case '-':
         case '÷':
         case '×':
-            corrResult = calculateResult(corrOper);
-            corrOper = oper;
-            if (resultText.textContent !== 'Ошибка') {
-                historyText.textContent += `${resultText.textContent} ${oper} `;
+            if (displayText.textContent == corrResult && corrOper !== oper) {
+                historyText.textContent = `${historyText.textContent.slice(0, -2)} ${oper} `;
             }
-            resultText.textContent = '0';
+            else {
+                corrResult = calculateResult(corrOper);
+                if (displayText.textContent !== 'Ошибка') {
+                    historyText.textContent += `${displayText.textContent} ${oper} `;
+                }
+                displayText.textContent = String(corrResult);
+            }
+            corrOper = oper;
             break;
         case '=':
             corrResult = calculateResult(corrOper);
+            displayText.textContent = String(corrResult);
             historyText.textContent = '';
-            resultText.textContent = String(corrResult);
             corrOper = '';
             break;
         case '±':
-            resultText.textContent = -resultText.textContent;
+            displayText.textContent = -displayText.textContent;
             break;
         case '.':
-            if (resultText.textContent.slice(-1) !== '.') {
-                resultText.textContent += '.';
+            if (displayText.textContent.slice(-1) !== '.') {
+                displayText.textContent += '.';
                 break;
             }
     }
 }
 
-let calculateResult = (oper) => {
-    if (oper === '') {
-        return Number(resultText.textContent);
-    }
-    else {
-        switch (oper) {
-            case '+':
-                return corrResult + Number(resultText.textContent);
-            case '-':
-                return corrResult - Number(resultText.textContent);
-
-            case '÷':
-                if (resultText.textContent === '0') {
-                    resultText.textContent = 'Ошибка';
-                }
-                else {
-                    return corrResult /Number(resultText.textContent);
-                }
-            case '×':
-                return corrResult * Number(resultText.textContent);
-        }
-    }
-}
-
 let addToDisplay = (num) => {
-    if (resultText.textContent === '0') {
-        resultText.textContent = num;
+    if (displayText.textContent === '0' || corrOper !== '') {
+        displayText.textContent = num;
     }
     else {
-        resultText.textContent += num;
+        displayText.textContent += num;
     }
 }
 
